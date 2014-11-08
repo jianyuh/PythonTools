@@ -1,13 +1,15 @@
 # -*- coding:utf-8 -*-
 import os
-filenames = os.listdir(os.curdir)				# 获得当前目录中的内容
+filenames = os.listdir(os.curdir)
 print (filenames)
+outputfile = "output.txt"
+output = open(outputfile,"w")
 for filename in filenames:
-        if filename != "codecopy.py" and os.path.isfile(filename):
-                f = open("test.txt","a")
-                fr = open(filename,"r")
-                f.write("\n\n\n")
-                f.write('\\\\')
-                f.write(filename)
-                f.write("\n")
-                f.write(fr.read())
+  if filename != "codecopy.py" and filename != outputfile and filename[-1] != '~' and os.path.isfile(filename):
+    print (filename)
+    sourcecode = open(filename,"r")
+    output.write('///////')
+    output.write(filename)
+    output.write("\n")
+    output.write(sourcecode.read())
+    output.write("\n\n")
